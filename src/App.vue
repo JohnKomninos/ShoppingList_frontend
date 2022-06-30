@@ -8,8 +8,12 @@
   import POST from './components/post.vue'
   import DELETE from './components/delete.vue'
   import EDIT from './components/edit.vue'
+  import FILTER from './components/mainfilters.vue'
+  import FILTERRESULTS from './components/filterresults.vue'
 
 //variables
+  let view = ref("main")
+
   let foods = ref([])
 
   let postNewItem = ref(
@@ -27,6 +31,9 @@
       aisle:""
     }
   )
+
+  let filterResults = ref([])
+
 //methods
   onMounted(()=>{
     axios.get('https://grocerylists-backend.herokuapp.com/api/items').then(response => foods.value = response.data)
@@ -68,12 +75,26 @@
       })
     })
   }
+
+  const filter = (item) =>{
+    filterResults.value = foods.value.filter(food => food.category == item.toLowerCase())
+    view.value = "filter"
+  }
+
+  const clearFilter = () =>{
+    view.value = "main"
+  }
+
 </script>
 
 
 <template>
 <h1>Master List</h1>
-  <div class="box" v-for="food in foods">
+  <FILTER :filter="filter" :clearFilter="clearFilter"/>
+  <div v-if="view == 'filter'" class="box" v-for="filterResult in filterResults">
+    <FILTERRESULTS :filterResult="filterResult"/>
+  </div>
+  <div v-if="view == 'main'" class="box" v-for="food in foods">
     <GET :food="food"/>
     <EDIT :food="food" :handleEdit="handleEdit" :editItem="editItem"/>
     <DELETE :handleDelete="handleDelete" :food="food"/>
