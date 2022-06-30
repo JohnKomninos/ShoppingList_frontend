@@ -48,4 +48,7 @@ onMounted(()=>{
 </template>
 
 <style>
+body{
+  color: red;
+}
 </style>
