@@ -3,7 +3,7 @@ export default{
   props:[],
   data(){
     return{
-
+      namess : [{name:"John"}]
     }
   }
 }
@@ -11,4 +11,5 @@ export default{
 
 <template>
   <h2>hello</h2>
+  {{namess[0].name}}
 </template>
