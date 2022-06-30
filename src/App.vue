@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
+import {ref} from 'vue'
+const name = "Tim"
+const names = ref("John")
 </script>
 
 <template>
-  <h2>hello</h2>
+  <h2>{{names}}</h2>
 </template>
 
 <style>
