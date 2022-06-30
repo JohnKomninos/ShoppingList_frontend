@@ -10,10 +10,32 @@ import POST from './components/post.vue'
 //variables
 let foods = ref([])
 
+let postNewItem = ref(
+    {
+      name:"",
+      category:"",
+      aisle:""
+    }
+  )
+
 //methods
 onMounted(()=>{
     axios.get('https://grocerylists-backend.herokuapp.com/api/items').then(response => foods.value = response.data)
   })
+
+  const handleCreate = () =>{
+      axios.post('https://grocerylists-backend.herokuapp.com/api/items', postNewItem.value)
+      .then((response)=>{
+        foods.value = [...foods.value, response.data]
+        postNewItem.value = ref(
+          {
+            name:"",
+            category:"",
+            aisle:""
+          }
+        )
+      })
+    }
 
 </script>
 
