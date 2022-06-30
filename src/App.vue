@@ -4,10 +4,12 @@ import TheWelcome from './components/TheWelcome.vue'
 import {ref} from 'vue'
 const name = "Tim"
 const names = ref("John")
+import GET from './components/add.vue'
 </script>
 
 <template>
   <h2>{{names}}</h2>
+  <GET/>
 </template>
 
 <style>
