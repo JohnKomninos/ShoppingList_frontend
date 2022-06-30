@@ -5,7 +5,7 @@ import axios from 'axios'
 
 //importing components
 import GET from './components/get.vue'
-
+import POST from './components/post.vue'
 
 //variables
 let foods = ref([])
@@ -22,6 +22,7 @@ onMounted(()=>{
   <div v-for="food in foods">
     <GET :food="food"/>
   </div>
+  <POST :handleCreate = "handleCreate" :postNewItem = "postNewItem"/>
 </template>
 
 <style>
