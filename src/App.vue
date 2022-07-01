@@ -9,9 +9,9 @@
   import DELETE from './components/delete.vue'
   import EDIT from './components/edit.vue'
   import FILTER from './components/mainfilters.vue'
-  import FILTERRESULTS from './components/filterResults.vue'
-  import CREATESUB from './components/createSub.vue'
-  import SUBSELECTION from './components/subSelection.vue'
+  import FILTERRESULTS from './components/filterresults.vue'
+  import CREATESUB from './components/createsub.vue'
+  import SUBSELECTION from './components/subselection.vue'
   import GETSUB from './components/getsub.vue'
 //variables
   let view = ref("get")
