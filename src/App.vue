@@ -11,8 +11,8 @@
   import FILTER from './components/mainfilters.vue'
   import FILTERRESULTS from './components/filterresults.vue'
   import CREATESUB from './components/subview.vue'
-  import SUBSELECTION from './components/subselection.vue'
-  import GETSUB from './components/getsub.vue'
+  import SUBSELECTION from './components/subselections.vue'
+  import GETSUB from './components/getsubs.vue'
 
 //variables
   let view = ref("get")
