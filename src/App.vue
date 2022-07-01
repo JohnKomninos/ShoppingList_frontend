@@ -8,7 +8,7 @@
   import POST from './components/post.vue'
   import DELETE from './components/delete.vue'
   import EDIT from './components/edit.vue'
-  import FILTER from './components/mainFilters.vue'
+  import FILTER from './components/mainfilters.vue'
   import FILTERRESULTS from './components/filterResults.vue'
   import CREATESUB from './components/createSub.vue'
   import SUBSELECTION from './components/subSelection.vue'
