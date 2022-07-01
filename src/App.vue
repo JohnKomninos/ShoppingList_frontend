@@ -13,6 +13,7 @@
   import CREATESUB from './components/createsub.vue'
   import SUBSELECTION from './components/subselection.vue'
   import GETSUB from './components/getsub.vue'
+
 //variables
   let view = ref("get")
   let page = ref("main")
