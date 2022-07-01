@@ -8,13 +8,17 @@
   import POST from './components/post.vue'
   import DELETE from './components/delete.vue'
   import EDIT from './components/edit.vue'
-  import FILTER from './components/mainfilters.vue'
-  import FILTERRESULTS from './components/filterresults.vue'
-
+  import FILTER from './components/mainFilters.vue'
+  import FILTERRESULTS from './components/filterResults.vue'
+  import CREATESUB from './components/createSub.vue'
+  import SUBSELECTION from './components/subSelection.vue'
+  import GETSUB from './components/getsub.vue'
 //variables
-  let view = ref("main")
+  let view = ref("get")
+  let page = ref("main")
 
   let foods = ref([])
+  let subFoods = ref([])
 
   let postNewItem = ref(
       {
@@ -32,11 +36,16 @@
     }
   )
 
+
   let filterResults = ref([])
 
 //methods
   onMounted(()=>{
     axios.get('https://grocerylists-backend.herokuapp.com/api/items').then(response => foods.value = response.data)
+  })
+
+  onMounted(()=>{
+    axios.get('https://grocerylists-backend.herokuapp.com/api/sublist').then(response => subFoods.value = response.data)
   })
 
   const handleCreate = () =>{
@@ -51,6 +60,35 @@
         }
       )
     })
+  }
+
+  const handleSubCreate = (index, itemQuantity) => {
+    let newSubItem = ref(
+        {
+          name:foods.value[index].name,
+          category:foods.value[index].category,
+          aisle:foods.value[index].aisle,
+          quantity:itemQuantity
+        }
+      )
+      for (let i = 0; i< subFoods.value.length; i++){
+        if(foods.value[index].name == subFoods.value[i].name){
+          alert('this item is already in the list')
+          return
+        }
+      }
+      axios.post('https://grocerylists-backend.herokuapp.com/api/sublist', newSubItem.value)
+      .then((response)=>{
+        subFoods.value = [...subFoods.value, response.data]
+        newSubItem.value = ref(
+          {
+            name:"",
+            category:"",
+            aisle:"",
+            quantity:""
+          }
+        )
+      })
   }
 
   const handleDelete = (id) =>{
@@ -82,24 +120,41 @@
   }
 
   const clearFilter = () =>{
-    view.value = "main"
+    view.value = "get"
+  }
+
+  const createSub = () =>{
+    page.value = "createSub"
+  }
+
+  const getSub = () =>{
+    page.value = "sub"
   }
 
 </script>
 
 
 <template>
-<h1>Master List</h1>
+<div v-if="page == 'createSub'">
+  <SUBSELECTION :foods="foods" :handleSubCreate="handleSubCreate" :getSub="getSub"/>
+</div>
+<div v-if="page == 'createSub' || page == 'sub'" class="box" v-for="subFood in subFoods">
+  <GETSUB :subFood="subFood"/>
+</div>
+<div v-if="page == 'main'">
+  <h1>Master List</h1>
   <FILTER :filter="filter" :clearFilter="clearFilter"/>
+  <CREATESUB :createSub="createSub"/>
   <div v-if="view == 'filter'" class="box" v-for="filterResult in filterResults">
     <FILTERRESULTS :filterResult="filterResult"/>
   </div>
-  <div v-if="view == 'main'" class="box" v-for="food in foods">
+  <div v-if="view == 'get'" class="box" v-for="food in foods">
     <GET :food="food"/>
     <EDIT :food="food" :handleEdit="handleEdit" :editItem="editItem"/>
     <DELETE :handleDelete="handleDelete" :food="food"/>
   </div>
   <POST :handleCreate = "handleCreate" :postNewItem = "postNewItem"/>
+</div>
 </template>
 
 <style>

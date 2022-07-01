@@ -14,6 +14,5 @@ export default{
     Name:{{filterResult.name}}<br/>
     Category:{{filterResult.category}}<br/>
     Aisle:{{filterResult.aisle}}<br/>
-    ID:{{filterResult.id}}
   </h2>
 </template>
