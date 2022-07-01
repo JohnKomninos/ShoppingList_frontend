@@ -13,7 +13,7 @@
   import CREATESUB from './components/subview.vue'
   import SUBSELECTION from './components/subselections.vue'
   import GETSUB from './components/getsubs.vue'
-
+  import DELETESUB from './components/deletesubs.vue'
 //variables
   let view = ref("get")
   let page = ref("main")
@@ -25,7 +25,8 @@
       {
         name:"",
         category:"",
-        aisle:""
+        aisle:"",
+        listname:""
       }
     )
 
@@ -40,9 +41,10 @@
 
   let filterResults = ref([])
 
+
 //methods
   onMounted(()=>{
-    axios.get('https://grocerylists-backend.herokuapp.com/api/items').then(response => foods.value = response.data)
+    axios.get('https://grocerylists-backend.herokuapp.com/api/items').then(response => foods.value = filterResults.value = response.data)
   })
 
   onMounted(()=>{
@@ -57,7 +59,8 @@
         {
           name:"",
           category:"",
-          aisle:""
+          aisle:"",
+          listname:""
         }
       )
     })
@@ -66,15 +69,15 @@
   const handleSubCreate = (index, itemQuantity) => {
     let newSubItem = ref(
         {
-          name:foods.value[index].name,
-          category:foods.value[index].category,
-          aisle:foods.value[index].aisle,
+          name:filterResults.value[index].name,
+          category:filterResults.value[index].category,
+          aisle:filterResults.value[index].aisle,
           quantity:itemQuantity
         }
       )
       for (let i = 0; i< subFoods.value.length; i++){
-        if(foods.value[index].name == subFoods.value[i].name){
-          alert('this item is already in the list')
+        if(filterResults.value[index].name == subFoods.value[i].name){
+          alert('this item is already in the list, did you mean to adjust the quantity?')
           return
         }
       }
@@ -96,6 +99,14 @@
     axios.delete('https://grocerylists-backend.herokuapp.com/api/items/' + id)
     .then((response)=>{
       foods.value = foods.value.filter(food => food.id !== id)
+    })
+  }
+
+  const handleSubDelete = (id) =>{
+    console.log(foods)
+    axios.delete('https://grocerylists-backend.herokuapp.com/api/sublist/' + id)
+    .then((response)=>{
+      subFoods.value = subFoods.value.filter(food => food.id !== id)
     })
   }
 
@@ -121,9 +132,16 @@
   }
 
   const clearFilter = () =>{
+    filterResults.value = foods.value
     view.value = "get"
   }
 
+  const search = (searchResults) =>{
+    filterResults.value = foods.value.filter(food => food.listname.toLowerCase().includes(searchResults.toLowerCase()))
+    view.value = "filter"
+  }
+
+//pages
   const createSub = () =>{
     page.value = "createSub"
   }
@@ -137,14 +155,15 @@
 
 <template>
 <div v-if="page == 'createSub'">
-  <SUBSELECTION :foods="foods" :handleSubCreate="handleSubCreate" :getSub="getSub"/>
+  <SUBSELECTION :foods="foods" :filterResults="filterResults" :handleSubCreate="handleSubCreate" :getSub="getSub"/>
 </div>
 <div v-if="page == 'createSub' || page == 'sub'" class="box" v-for="subFood in subFoods">
   <GETSUB :subFood="subFood"/>
+  <DELETESUB :handleSubDelete="handleSubDelete" :subFood="subFood"/>
 </div>
 <div v-if="page == 'main'">
   <h1>Master List</h1>
-  <FILTER :filter="filter" :clearFilter="clearFilter"/>
+  <FILTER :filter="filter" :clearFilter="clearFilter" :search="search"/>
   <CREATESUB :createSub="createSub"/>
   <div v-if="view == 'filter'" class="box" v-for="filterResult in filterResults">
     <FILTERRESULTS :filterResult="filterResult"/>

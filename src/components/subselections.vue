@@ -9,11 +9,11 @@ export default{
       itemQuantity : 1
     }
   },
-  props:["foods", "handleSubCreate", "getSub"],
+  props:["foods", "filterResults" , "handleSubCreate", "getSub"],
   methods:{
     increaseIndex () {
       this.index++
-      if(this.index > this.foods.length-1){
+      if(this.index > this.filterResults.length-1){
         this.getSub()
         this.index = 0
       }
@@ -35,8 +35,8 @@ export default{
 </script>
 
 <template>
-  Name:{{foods[index].name}}<br/>
-  Category:{{foods[index].category}}<br/>
+  Name:{{filterResults[index].name}}<br/>
+  Category:{{filterResults[index].category}}<br/>
   <div v-if="quantity == false">
     Do you need this item?
     <button @click="displayQuantity">Yes</button>
