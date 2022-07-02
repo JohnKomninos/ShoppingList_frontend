@@ -17,3 +17,8 @@ export default{
     ListName:{{filterResult.listname}}
   </h2>
 </template>
+
+<style>
+
+
+</style>

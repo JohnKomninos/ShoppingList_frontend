@@ -29,6 +29,7 @@ export default{
       this.handleSubCreate(index, itemQuantity)
       this.displayQuantity()
       this.increaseIndex()
+      this.itemQuantity = 1
     }
   }
 }
