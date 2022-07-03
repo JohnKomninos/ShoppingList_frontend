@@ -10,5 +10,13 @@ export default{
 </script>
 
 <template>
-  <button @click="handleDelete(food.id)">DELETE</button>
+  <td>
+    <button @click="handleDelete(food.id)">X</button>
+  </td>
 </template>
+
+<style>
+  td button{
+    border-style: none;
+  }
+</style>

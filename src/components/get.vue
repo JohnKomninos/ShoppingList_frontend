@@ -10,10 +10,16 @@ export default{
 </script>
 
 <template>
-  <h2>
-    Name:{{food.name}}<br/>
-    Category:{{food.category}}<br/>
-    Aisle:{{food.aisle}}<br/>
-    ListName:{{food.listname}}
-  </h2>
+    <td>
+      {{food.name}}
+    </td>
+    <td>
+      {{food.category}}
+    </td>
+    <td>
+      {{food.aisle}}
+    </td>
+    <td>
+      {{food.listname}}
+    </td>
 </template>

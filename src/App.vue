@@ -177,17 +177,26 @@
       <FILTER :filter="filter" :clearFilter="clearFilter" :search="search" :menu="menu"/>
       <CREATESUB :createSub="createSub" :menu="menu"/>
       <POST :handleCreate = "handleCreate" :postNewItem = "postNewItem" :menu="menu"/>
+      <table>
+        <tr>
+          <th><h2>Name</h2></th>
+          <th><h2>Category</h2></th>
+          <th><h2>Aisle</h2></th>
+          <th><h2>List Name</h2></th>
+          <th><h2>Edit Item</h2></th>
+          <th><h2>Delete</h2></th>
+        </tr>
       <div v-if="view == 'filter'" class="filter-result" v-for="filterResult in filterResults">
         <div className="item-detail">
           <FILTERRESULTS :filterResult="filterResult"/>
         </div>
       </div>
-
-      <div v-if="view == 'get'" class="box" v-for="food in foods">
-        <GET :food="food"/>
-        <EDIT :food="food" :handleEdit="handleEdit" :editItem="editItem"/>
-        <DELETE :handleDelete="handleDelete" :food="food"/>
-      </div>
+          <tr v-if="view == 'get'" class="box" v-for="food in foods">
+            <GET :food="food"/>
+            <EDIT :food="food" :handleEdit="handleEdit" :editItem="editItem"/>
+            <DELETE :handleDelete="handleDelete" :food="food"/>
+          </tr>
+      </table>
     </div>
     <div v-if="page == 'createSub'">
       <SUBSELECTION :foods="foods" :filterResults="filterResults" :handleSubCreate="handleSubCreate" :getSub="getSub"/>
@@ -226,6 +235,24 @@
 
 .item-detail{
   margin-left: 110px;
+}
+
+table{
+  border: 2px solid black;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+th{
+  border: 2px solid black;
+  width:150px;
+}
+
+td{
+  border: 2px solid black;
+  text-align: center;
+  padding:0;
+  margin:0;
 }
 
 </style>

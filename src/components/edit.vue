@@ -10,12 +10,15 @@ export default{
 </script>
 
 <template>
-  <details>
-    <form @submit.prevent="handleEdit(food.id)">
-      <input v-model="editItem.name" type="text"><br/>
-      <input v-model="editItem.category" type="text"><br/>
-      <input v-model="editItem.aisle" type="number"><br/>
-      <button type="submit">Submit</button>
-    </form>
-</details>
+  <td>
+    <details>
+      <summary></summary>
+      <form @submit.prevent="handleEdit(food.id)">
+        <input v-model="editItem.name" type="text"><br/>
+        <input v-model="editItem.category" type="text"><br/>
+        <input v-model="editItem.aisle" type="number"><br/>
+        <button type="submit">Submit</button>
+      </form>
+    </details>
+  </td>
 </template>
