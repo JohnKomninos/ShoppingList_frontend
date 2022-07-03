@@ -15,9 +15,11 @@
   import GETSUB from './components/getsubs.vue'
   import DELETESUB from './components/deletesubs.vue'
   import HEADER from './components/header.vue'
+  import HIDEMENU from './components/hidemenu.vue'
 //variables
   let view = ref("get")
   let page = ref("main")
+  let menu = ref(true)
 
   let foods = ref([])
   let subFoods = ref([])
@@ -156,34 +158,43 @@
     page.value = "sub"
   }
 
+  const toggleMenu = () =>{
+    if(menu.value){
+      menu.value = false
+    } else{
+      menu.value = true
+    }
+  }
 </script>
 
 
 <template>
   <div class="flex-parent">
     <HEADER :main="main" :getSub="getSub"/>
+    <div className="main-flex" v-if="page == 'main'">
+      <h1 className="page-title">Master List</h1>
+      <HIDEMENU :menu="menu" :toggleMenu="toggleMenu"/>
+      <FILTER :filter="filter" :clearFilter="clearFilter" :search="search" :menu="menu"/>
+      <CREATESUB :createSub="createSub" :menu="menu"/>
+      <POST :handleCreate = "handleCreate" :postNewItem = "postNewItem" :menu="menu"/>
+      <div v-if="view == 'filter'" class="filter-result" v-for="filterResult in filterResults">
+        <div className="item-detail">
+          <FILTERRESULTS :filterResult="filterResult"/>
+        </div>
+      </div>
+
+      <div v-if="view == 'get'" class="box" v-for="food in foods">
+        <GET :food="food"/>
+        <EDIT :food="food" :handleEdit="handleEdit" :editItem="editItem"/>
+        <DELETE :handleDelete="handleDelete" :food="food"/>
+      </div>
+    </div>
     <div v-if="page == 'createSub'">
       <SUBSELECTION :foods="foods" :filterResults="filterResults" :handleSubCreate="handleSubCreate" :getSub="getSub"/>
     </div>
     <div v-if="page == 'createSub' || page == 'sub'" class="box" v-for="subFood in subFoods">
       <GETSUB :subFood="subFood"/>
       <DELETESUB :handleSubDelete="handleSubDelete" :subFood="subFood"/>
-    </div>
-    <div className="main-flex" v-if="page == 'main'">
-      <h1 className="page-title">Master List</h1>
-      <FILTER :filter="filter" :clearFilter="clearFilter" :search="search"/>
-      <CREATESUB :createSub="createSub"/>
-      <div v-if="view == 'filter'" class="filter-result" v-for="filterResult in filterResults">
-        <div className="item-detail">
-          <FILTERRESULTS :filterResult="filterResult"/>
-        </div>
-      </div>
-      <div v-if="view == 'get'" class="box" v-for="food in foods">
-        <GET :food="food"/>
-        <EDIT :food="food" :handleEdit="handleEdit" :editItem="editItem"/>
-        <DELETE :handleDelete="handleDelete" :food="food"/>
-      </div>
-      <POST :handleCreate = "handleCreate" :postNewItem = "postNewItem"/>
     </div>
   </div>
 </template>

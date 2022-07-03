@@ -15,7 +15,7 @@ export default{
       <h1 className="cursor">Master List</h1>
     </div>
     <div @click="getSub">
-      <h1 className="cursor">Sub List</h1>
+      <h1 className="cursor">Shopping List</h1>
     </div>
   </div>
 </template>

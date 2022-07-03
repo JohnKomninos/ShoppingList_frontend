@@ -1,6 +1,6 @@
 <script>
 export default{
-  props:["filter", "clearFilter", "search"],
+  props:["filter", "clearFilter", "search", "menu"],
   data(){
     return{
       searchResults : ""
@@ -10,7 +10,7 @@ export default{
 </script>
 
 <template>
-  <div className="mainfilters">
+  <div v-if=" menu == true" className="mainfilters">
     <div className="filter">
       <h2 >
         Filter by:
