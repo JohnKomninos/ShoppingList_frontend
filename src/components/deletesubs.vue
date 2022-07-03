@@ -10,5 +10,7 @@ export default{
 </script>
 
 <template>
-  <button @click="handleSubDelete(subFood.id)">DELETE</button>
+  <td>
+    <button @click="handleSubDelete(subFood.id)">DELETE</button>
+  </td>
 </template>

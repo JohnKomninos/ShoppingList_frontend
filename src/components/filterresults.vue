@@ -10,12 +10,22 @@ export default{
 </script>
 
 <template>
-  <h2>
-    Name:{{filterResult.name}}<br/>
-    Category:{{filterResult.category}}<br/>
-    Aisle:{{filterResult.aisle}}<br/>
-    ListName:{{filterResult.listname}}
-  </h2>
+  <td>
+    {{filterResult.name}}
+  </td>
+  <td>
+    {{filterResult.category}}
+  </td>
+  <td>
+    {{filterResult.aisle}}
+  </td>
+  <td>
+    {{filterResult.listname}}
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
 </template>
 
 <style>

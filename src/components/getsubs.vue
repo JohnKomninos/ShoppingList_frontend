@@ -15,10 +15,16 @@ export default{
 </script>
 
 <template>
-  <h2>
-    Name:{{subFood.name}}<br/>
-    Category:{{subFood.category}}<br/>
-    Aisle:{{subFood.aisle}}<br/>
-    Quantity:{{subFood.quantity}}
-  </h2>
+  <td>
+    {{subFood.name}}
+  </td>
+  <td>
+    {{subFood.category}}
+  </td>
+  <td>
+    {{subFood.aisle}}
+  </td>
+  <td>
+    {{subFood.quantity}}
+  </td>
 </template>

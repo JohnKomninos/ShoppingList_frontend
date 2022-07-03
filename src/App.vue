@@ -37,7 +37,8 @@
     {
       name:"",
       category:"",
-      aisle:""
+      aisle:"",
+      listname:""
     }
   )
 
@@ -106,7 +107,6 @@
   }
 
   const handleSubDelete = (id) =>{
-    console.log(foods)
     axios.delete('https://grocerylists-backend.herokuapp.com/api/sublist/' + id)
     .then((response)=>{
       subFoods.value = subFoods.value.filter(food => food.id !== id)
@@ -120,7 +120,8 @@
         {
           name:"",
           category:"",
-          aisle:""
+          aisle:"",
+          listname:""
         }
       )
       foods.value = foods.value.map((food)=>{
@@ -186,11 +187,9 @@
           <th><h2>Edit Item</h2></th>
           <th><h2>Delete</h2></th>
         </tr>
-      <div v-if="view == 'filter'" class="filter-result" v-for="filterResult in filterResults">
-        <div className="item-detail">
+      <tr v-if="view == 'filter'" v-for="filterResult in filterResults">
           <FILTERRESULTS :filterResult="filterResult"/>
-        </div>
-      </div>
+      </tr>
           <tr v-if="view == 'get'" class="box" v-for="food in foods">
             <GET :food="food"/>
             <EDIT :food="food" :handleEdit="handleEdit" :editItem="editItem"/>
@@ -201,10 +200,18 @@
     <div v-if="page == 'createSub'">
       <SUBSELECTION :foods="foods" :filterResults="filterResults" :handleSubCreate="handleSubCreate" :getSub="getSub"/>
     </div>
-    <div v-if="page == 'createSub' || page == 'sub'" class="box" v-for="subFood in subFoods">
-      <GETSUB :subFood="subFood"/>
-      <DELETESUB :handleSubDelete="handleSubDelete" :subFood="subFood"/>
-    </div>
+    <h1 v-if="page == 'createSub' || page == 'sub'" className="page-title">Shopping List</h1>
+    <table v-if="page == 'createSub' || page == 'sub'">
+      <th><h2>Name</h2></th>
+      <th><h2>Category</h2></th>
+      <th><h2>Aisle</h2></th>
+      <th><h2>Quantity</h2></th>
+      <th><h2>Delete</h2></th>
+      <tr class="box" v-for="subFood in subFoods">
+        <GETSUB :subFood="subFood"/>
+        <DELETESUB :handleSubDelete="handleSubDelete" :subFood="subFood"/>
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -227,11 +234,6 @@
   text-align: center;
 }
 
-.filter-result{
-  display: flex;
-  flex-wrap: wrap;
-  width:400px;
-}
 
 .item-detail{
   margin-left: 110px;

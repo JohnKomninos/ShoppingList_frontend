@@ -27,6 +27,7 @@ export default{
     justify-content: space-around;
     border-bottom: solid black;
     background-color: lightgray;
+    margin-bottom: 20px;
   }
 
   .cursor{
