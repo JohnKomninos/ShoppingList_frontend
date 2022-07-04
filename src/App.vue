@@ -20,6 +20,7 @@
   let view = ref("get")
   let page = ref("main")
   let menu = ref(true)
+  let edit = ref("")
 
   let foods = ref([])
   let subFoods = ref([])
@@ -113,9 +114,20 @@
     })
   }
 
-  const handleEdit = (id) =>{
-    axios.put('https://grocerylists-backend.herokuapp.com/api/items/' + id, editItem.value)
+  const handleEdit = (food) =>{
+    console.log(editItem.value.name)
+    if(editItem.value.name === undefined || editItem.value.name === "" ){
+      editItem.value.name = food.name
+    } if(editItem.value.category === undefined || editItem.value.category === "" ){
+      editItem.value.category = food.category
+    } if(editItem.value.aisle === undefined || editItem.value.aisle === ""){
+      editItem.value.aisle = food.aisle
+    } if(editItem.value.listname === undefined || editItem.value.listname === ""){
+      editItem.value.listname = food.listname
+    }
+    axios.put('https://grocerylists-backend.herokuapp.com/api/items/' + food.id, editItem.value)
     .then((response)=>{
+      edit.value = ""
       editItem.value = ref(
         {
           name:"",
@@ -143,6 +155,22 @@
   const search = (searchResults) =>{
     filterResults.value = foods.value.filter(food => food.listname.toLowerCase().includes(searchResults.toLowerCase()))
     view.value = "filter"
+  }
+
+  const setID = (iD) =>{
+    editItem.value = ref(
+      {
+        name:"",
+        category:"",
+        aisle:"",
+        listname:""
+      }
+    )
+    if(edit.value === iD){
+      edit.value = ""
+    } else{
+        edit.value = iD
+    }
   }
 
 //pages
@@ -187,14 +215,14 @@
           <th><h2>Edit Item</h2></th>
           <th><h2>Delete</h2></th>
         </tr>
-      <tr v-if="view == 'filter'" v-for="filterResult in filterResults">
+        <tr v-if="view == 'filter'" v-for="filterResult in filterResults">
           <FILTERRESULTS :filterResult="filterResult"/>
-      </tr>
-          <tr v-if="view == 'get'" class="box" v-for="food in foods">
-            <GET :food="food"/>
-            <EDIT :food="food" :handleEdit="handleEdit" :editItem="editItem"/>
-            <DELETE :handleDelete="handleDelete" :food="food"/>
-          </tr>
+        </tr>
+        <tr v-if="view == 'get'" class="box" v-for="food in foods">
+          <GET :food="food"/>
+          <EDIT :food="food" :handleEdit="handleEdit" :editItem="editItem" :edit="edit" :setID="setID"/>
+          <DELETE :handleDelete="handleDelete" :food="food"/>
+        </tr>
       </table>
     </div>
     <div v-if="page == 'createSub'">
@@ -216,45 +244,44 @@
 </template>
 
 <style>
-.flex-parent{
-  display: flex;
-  flex-wrap: wrap;
-  width:100%;
-  justify-content: center;
-}
+  .flex-parent{
+    display: flex;
+    flex-wrap: wrap;
+    width:100%;
+    justify-content: center;
+  }
 
-.main-flex{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+  .main-flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-.page-title{
-  width:100%;
-  text-align: center;
-}
+  .page-title{
+    width:100%;
+    text-align: center;
+  }
 
 
-.item-detail{
-  margin-left: 110px;
-}
+  .item-detail{
+    margin-left: 110px;
+  }
 
-table{
-  border: 2px solid black;
-  text-align: center;
-  border-collapse: collapse;
-}
+  table{
+    border: 2px solid black;
+    text-align: center;
+    border-collapse: collapse;
+  }
 
-th{
-  border: 2px solid black;
-  width:150px;
-}
+  th{
+    border: 2px solid black;
+    width:150px;
+  }
 
-td{
-  border: 2px solid black;
-  text-align: center;
-  padding:0;
-  margin:0;
-}
-
+  td{
+    border: 2px solid black;
+    text-align: center;
+    padding:0;
+    margin:0;
+  }
 </style>
