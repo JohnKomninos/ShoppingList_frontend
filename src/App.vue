@@ -365,5 +365,6 @@
     font-size: 14px;
     height: 30px;
     margin:5px;
+    text-align: center;
   }
 </style>
