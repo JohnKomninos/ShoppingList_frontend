@@ -55,4 +55,8 @@ export default{
   .selection{
       text-align: center;
   }
+
+  h3{
+    font-size: 30px;
+  }
 </style>
