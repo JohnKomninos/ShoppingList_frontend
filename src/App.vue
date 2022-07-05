@@ -22,6 +22,9 @@
   let page = ref("main")
   let menu = ref(true)
   let edit = ref("")
+  let postCategory = ref("")
+  let editCategory = ref("")
+  let filterItem = ref("")
 
   let foods = ref([])
   let subFoods = ref([])
@@ -58,9 +61,13 @@
   })
 
   const handleCreate = () =>{
+    postCategory.value = postNewItem.value.category
     axios.post('https://grocerylists-backend.herokuapp.com/api/items', postNewItem.value)
     .then((response)=>{
       foods.value = [...foods.value, response.data]
+      if(filterResults.value[0].category.toLowerCase() === postCategory.value.toLowerCase()){
+      filterResults.value = [...filterResults.value, response.data]
+      }
       postNewItem.value = ref(
         {
           name:"",
@@ -135,6 +142,7 @@
     axios.delete('https://grocerylists-backend.herokuapp.com/api/items/' + id)
     .then((response)=>{
       foods.value = foods.value.filter(food => food.id !== id)
+      filterResults.value = filterResults.value.filter(food => food.id !== id)
     })
   }
 
@@ -146,7 +154,7 @@
   }
 
   const handleEdit = (food) =>{
-    console.log(editItem.value.name)
+    editCategory.value = editItem.value.category
     if(editItem.value.name === undefined || editItem.value.name === "" ){
       editItem.value.name = food.name
     } if(editItem.value.category === undefined || editItem.value.category === "" ){
@@ -170,17 +178,23 @@
       foods.value = foods.value.map((food)=>{
         return food.id !== response.data.id ? food : response.data
       })
+      console.log(filterItem.value)
+      if(filterItem.value !== ""){
+      filter(filterItem.value)
+      }
     })
   }
 
   const filter = (item) =>{
     filterResults.value = foods.value.filter(food => food.category == item.toLowerCase())
     view.value = "filter"
+    filterItem.value = item
   }
 
   const clearFilter = () =>{
     filterResults.value = foods.value
     view.value = "get"
+    filterItem.value = ""
   }
 
   const search = (searchResults) =>{
@@ -248,6 +262,9 @@
         </tr>
         <tr v-if="view == 'filter'" v-for="filterResult in filterResults">
           <FILTERRESULTS :filterResult="filterResult"/>
+          <EDIT :food="filterResult" :handleEdit="handleEdit" :editItem="editItem" :edit="edit" :setID="setID"/>
+          <DELETE :handleDelete="handleDelete" :food="filterResult"/>
+          <QUICKADD :addToList="addToList" :food="filterResult"/>
         </tr>
         <tr v-if="view == 'get'" class="box" v-for="food in foods">
           <GET :food="food"/>

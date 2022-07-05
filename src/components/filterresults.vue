@@ -22,10 +22,6 @@ export default{
   <td>
     {{filterResult.listname}}
   </td>
-  <td>
-  </td>
-  <td>
-  </td>
 </template>
 
 <style>
