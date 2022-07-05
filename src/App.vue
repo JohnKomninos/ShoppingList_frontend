@@ -317,7 +317,7 @@
   }
 
   table{
-    border: 2px solid black;
+    /* border: 2px solid black; */
     text-align: center;
     border-collapse: collapse;
     margin-bottom: 100px;
@@ -333,5 +333,32 @@
     text-align: center;
     padding:0;
     margin:0;
+  }
+
+  body{
+    background-color: rgb(189, 232, 239);
+    color: rgb(255, 0, 127);
+  }
+
+  .button-design{
+    cursor: pointer;
+    background-color: #EA4C89;
+    border-radius: 8px;
+    border-style: none;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    margin: 3px;
+    padding: 10px 16px;
+    text-align: center;
+  }
+
+  input[type = text], input[type = number]{
+    border-radius: 8px;
+    border-style: none;
+    font-size: 14px;
+    height: 30px;
+    margin:5px;
   }
 </style>

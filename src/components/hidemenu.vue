@@ -11,10 +11,10 @@ export default{
 
 <template>
   <div className="menu" v-if = "menu == true">
-    <button @click = "toggleMenu">Hide Menu</button>
+    <button className="button-design" @click = "toggleMenu">Hide Menu</button>
   </div>
   <div className="menu" v-if = "menu == false">
-    <button @click = "toggleMenu">Show Menu</button>
+    <button className="button-design" @click = "toggleMenu">Show Menu</button>
   </div>
 </template>
 

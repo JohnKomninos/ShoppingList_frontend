@@ -16,7 +16,7 @@ export default{
       <input v-model="postNewItem.category" type="text" placeholder="Category"><br/>
       <input v-model="postNewItem.aisle" type="number" placeholder="Aisle"><br/>
       <input v-model="postNewItem.listname" type="text" placeholder="ListName"><br/>
-      <button type="submit">Submit</button>
+      <button className="button-design" type="submit">Submit</button>
     </form>
   </div>
 </template>
@@ -27,5 +27,9 @@ export default{
     width:100%;
     justify-content: center;
     margin-bottom: 10px;
+  }
+
+  .post button{
+    margin-top: 15px;
   }
 </style>

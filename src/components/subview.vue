@@ -11,7 +11,7 @@ export default{
 
 <template>
   <div v-if="menu == true" className="subview">
-    <button @click="createSub">Create Shopping List</button>
+    <button className="button-design" @click="createSub">Create Shopping List</button>
   </div>
 </template>
 

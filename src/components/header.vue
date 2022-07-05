@@ -28,6 +28,7 @@ export default{
     border-bottom: solid black;
     background-color: lightgray;
     margin-bottom: 20px;
+    background-color: rgb(189, 232, 239)
   }
 
   .cursor{

@@ -14,10 +14,10 @@ export default{
     <div className="filter">
       <h2 >
         Filter by:
-        <button @click="filter('Grain')">Grain</button>
-        <button @click="filter('Meat')">Meat</button>
-        <button @click="filter('Vegetable')">Vegetable</button>
-        <button @click="clearFilter">Clear Filter</button><br/>
+        <button className="button-design" @click="filter('Grain')">Grain</button>
+        <button className="button-design" @click="filter('Meat')">Meat</button>
+        <button className="button-design" @click="filter('Vegetable')">Vegetable</button>
+        <button className="button-design" @click="clearFilter">Clear Filter</button><br/>
       </h2>
     </div>
     <div>
@@ -25,7 +25,7 @@ export default{
         <form @submit.prevent="search(searchResults)">
           Search by List:
           <input type="text" v-model="searchResults">
-          <input type="submit">
+          <input className="button-design" type="submit">
         </form>
       </h2>
     </div>
