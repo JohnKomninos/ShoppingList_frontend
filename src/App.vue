@@ -16,6 +16,7 @@
   import DELETESUB from './components/deletesubs.vue'
   import HEADER from './components/header.vue'
   import HIDEMENU from './components/hidemenu.vue'
+  import QUICKADD from './components/quickadd.vue'
 //variables
   let view = ref("get")
   let page = ref("main")
@@ -88,6 +89,36 @@
       }
       axios.post('https://grocerylists-backend.herokuapp.com/api/sublist', newSubItem.value)
       .then((response)=>{
+        subFoods.value = [...subFoods.value, response.data]
+        newSubItem.value = ref(
+          {
+            name:"",
+            category:"",
+            aisle:"",
+            quantity:""
+          }
+        )
+      })
+  }
+
+  const addToList = (food) =>{
+    let newSubItem = ref(
+        {
+          name:food.name,
+          category:food.category,
+          aisle:food.aisle,
+          quantity:1
+        }
+      )
+      for (let i = 0; i< subFoods.value.length; i++){
+        if(food.name == subFoods.value[i].name){
+          alert('this item is already in the list, did you mean to adjust the quantity?')
+          return
+        }
+      }
+      axios.post('https://grocerylists-backend.herokuapp.com/api/sublist', newSubItem.value)
+      .then((response)=>{
+        alert(`${food.name} successfully added to list`)
         subFoods.value = [...subFoods.value, response.data]
         newSubItem.value = ref(
           {
@@ -173,6 +204,13 @@
     }
   }
 
+  const toggleMenu = () =>{
+    if(menu.value){
+      menu.value = false
+    } else{
+      menu.value = true
+    }
+  }
 //pages
 
   const main = () =>{
@@ -185,14 +223,6 @@
 
   const getSub = () =>{
     page.value = "sub"
-  }
-
-  const toggleMenu = () =>{
-    if(menu.value){
-      menu.value = false
-    } else{
-      menu.value = true
-    }
   }
 </script>
 
@@ -214,6 +244,7 @@
           <th><h2>List Name</h2></th>
           <th><h2>Edit Item</h2></th>
           <th><h2>Delete</h2></th>
+          <th><h2>Quick Add</h2></th>
         </tr>
         <tr v-if="view == 'filter'" v-for="filterResult in filterResults">
           <FILTERRESULTS :filterResult="filterResult"/>
@@ -222,6 +253,7 @@
           <GET :food="food"/>
           <EDIT :food="food" :handleEdit="handleEdit" :editItem="editItem" :edit="edit" :setID="setID"/>
           <DELETE :handleDelete="handleDelete" :food="food"/>
+          <QUICKADD :addToList="addToList" :food="food"/>
         </tr>
       </table>
     </div>
@@ -271,11 +303,12 @@
     border: 2px solid black;
     text-align: center;
     border-collapse: collapse;
+    margin-bottom: 100px;
   }
 
   th{
     border: 2px solid black;
-    width:150px;
+    width:120px;
   }
 
   td{
