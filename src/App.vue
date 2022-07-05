@@ -293,6 +293,8 @@
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
+
   .flex-parent{
     display: flex;
     flex-wrap: wrap;
@@ -326,6 +328,7 @@
   th{
     border: 2px solid black;
     width:120px;
+    font-size: 20px;
   }
 
   td{
@@ -333,11 +336,13 @@
     text-align: center;
     padding:0;
     margin:0;
+    font-size: 30px;
   }
 
   body{
     background-color: rgb(189, 232, 239);
     color: rgb(255, 0, 127);
+    font-family: 'Caveat', cursive;
   }
 
   .button-design{
