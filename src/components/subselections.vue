@@ -47,8 +47,10 @@ export default{
     <h3>How many?
       <input type="number" v-model="itemQuantity"/>
       <input className="button-design" type="submit"/>
+      <button @click="displayQuantity" className="button-design">Back</button>
     </h3>
   </form>
+
 </template>
 
 <style>

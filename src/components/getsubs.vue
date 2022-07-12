@@ -1,11 +1,6 @@
 <script>
 export default{
   props:["subFood"],
-  methods : {
-    sayHi(){
-      console.log('hello')
-    }
-  },
   data(){
     return{
 
