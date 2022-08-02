@@ -7,7 +7,7 @@ https://github.com/JohnKomninos/ShoppingList_Backend
 
 purpose:
   This app lets users create a master list of items that they may need to purchase weekly. The user can then cycle through those items and create a "sublist" of items that need to be purchased on any given day. The master list always stays intact while the sublist can be deleted and recreated every time the user needs to shop.
-
+hello
 Technology used:
   Master list page:
     1. Hide menu - this button uses "v-if functionality" to display or hide the menu options
