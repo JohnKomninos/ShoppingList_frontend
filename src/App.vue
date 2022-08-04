@@ -185,6 +185,10 @@
     })
   }
 
+  const handleSubEdit = (subFood, subQuantity) => {
+    console.log(subQuantity)
+  }
+
   const filter = (item) =>{
     filterResults.value = foods.value.filter(food => food.category == item.toLowerCase())
     view.value = "filter"
@@ -285,7 +289,7 @@
       <th><h2>Quantity</h2></th>
       <th><h2>Delete</h2></th>
       <tr class="box" v-for="subFood in subFoods">
-        <GETSUB :subFood="subFood"/>
+        <GETSUB :subFood="subFood" :handleSubEdit="handleSubEdit"/>
         <DELETESUB :handleSubDelete="handleSubDelete" :subFood="subFood"/>
       </tr>
     </table>

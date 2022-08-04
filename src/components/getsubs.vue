@@ -1,9 +1,23 @@
 <script>
 export default{
-  props:["subFood"],
+  props:["subFood", "handleSubEdit"],
+  methods:{
+    editQuantity(){
+      if(this.edit == true){
+          this.edit = false
+      } else {
+      this.edit = true
+      }
+    },
+    submitAndChangeView(subFood, subQuantity){
+      this.handleSubEdit(subFood, subQuantity)
+      this.editQuantity()
+    }
+  },
   data(){
     return{
-
+      edit : false,
+      subQuantity : 1
     }
   }
 }
@@ -20,6 +34,16 @@ export default{
     {{subFood.aisle}}
   </td>
   <td>
-    {{subFood.quantity}}
+    <div v-if="edit == false">
+      {{subFood.quantity}}
+      <button @click="editQuantity">Edit Quantity</button>
+    </div>
+    <div v-if="edit == true">
+    <form @submit.prevent="submitAndChangeView(subFood, subQuantity)">
+      <input type="number" v-model="subQuantity"/>
+      <input className="button-design" type="submit"/>
+      <button @click="editQuantity" className="button-design" >Cancel</button>
+    </form>
+    </div>
   </td>
 </template>
