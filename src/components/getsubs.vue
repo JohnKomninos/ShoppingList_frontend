@@ -35,8 +35,8 @@ export default{
   </td>
   <td>
     <div v-if="edit == false">
-      {{subFood.quantity}}
-      <button @click="editQuantity">Edit Quantity</button>
+      {{subFood.quantity}}<br/>
+      <button @click="editQuantity">Edit</button>
     </div>
     <div v-if="edit == true">
     <form @submit.prevent="submitAndChangeView(subFood, subQuantity)">

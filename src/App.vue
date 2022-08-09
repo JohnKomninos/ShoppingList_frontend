@@ -17,6 +17,7 @@
   import HEADER from './components/header.vue'
   import HIDEMENU from './components/hidemenu.vue'
   import QUICKADD from './components/quickadd.vue'
+  import SEEDDATA from './components/seeddata.vue'
 //variables
   let view = ref("get")
   let page = ref("main")
@@ -186,7 +187,23 @@
   }
 
   const handleSubEdit = (subFood, subQuantity) => {
-    console.log(subQuantity)
+    if(subQuantity === ""){
+        subQuantity = subFood.quantity
+    }
+    let editSubItem = ref(
+        {
+          name:subFood.name,
+          category:subFood.category,
+          aisle:subFood.aisle,
+          quantity:subQuantity
+        }
+      )
+    axios.put('https://grocerylists-backend.herokuapp.com/api/sublist/' + subFood.id, editSubItem.value)
+    .then((response)=>{
+      subFoods.value = subFoods.value.map((food)=>{
+        return food.id !== response.data.id ? food : response.data
+      })
+    })
   }
 
   const filter = (item) =>{
@@ -229,6 +246,11 @@
       menu.value = true
     }
   }
+
+  const quickSeed = () =>{
+    
+  }
+
 //pages
 
   const main = () =>{
@@ -251,6 +273,7 @@
     <div className="main-flex" v-if="page == 'main'">
       <h1 className="page-title">Master List</h1>
       <HIDEMENU :menu="menu" :toggleMenu="toggleMenu"/>
+      <SEEDDATA :quickSeed="quickSeed"/>
       <FILTER :filter="filter" :clearFilter="clearFilter" :search="search" :menu="menu"/>
       <CREATESUB :createSub="createSub" :menu="menu"/>
       <POST :handleCreate = "handleCreate" :postNewItem = "postNewItem" :menu="menu"/>
