@@ -48,6 +48,411 @@
     }
   )
 
+  let seedItem =[
+      {
+        name:'Eggs',
+        category:'dairy',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'Milk',
+        category:'dairy',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'laughing cow',
+        category:'dairy',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'asparagus',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'spinach',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'kale',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'garlic',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'onion',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'red pepper',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'green pepper',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'yellow pepper',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'orange pepper',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'broccoli',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'green onion',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'carrots',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'sweet potato',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'frozen peas',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'brussel sprouts',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'ginger root',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'cilantro',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'salsa',
+        category:'etc',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'honey',
+        category:'etc',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'soy sauce',
+        category:'etc',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'olive oil',
+        category:'etc',
+        aisle:"",
+        listname:"main"
+      },
+      {
+        name:'pesto',
+        category:'etc',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'peanut butter',
+        category:'etc',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'bread crumbs',
+        category:'etc',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'sesame oil',
+        category:'etc',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'sesame seeds',
+        category:'etc',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'pickles',
+        category:'etc',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'parma cheese',
+        category:'dairy',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'mexican cheese',
+        category:'dairy',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'feta cheese',
+        category:'dairy',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'chipotle crema',
+        category:'etc',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'taco seasoning',
+        category:'etc',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'walnuts',
+        category:'etc',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'raisins',
+        category:'etc',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'quinoa',
+        category:'grain',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'wheat pasta',
+        category:'grain',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'ancient grain',
+        category:'grain',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'wasa crackers',
+        category:'grain',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'wheat wraps',
+        category:'grain',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'brown rice',
+        category:'grain',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'Vegetable pasta',
+        category:'grain',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'daves bread',
+        category:'grain',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'taco shells',
+        category:'grain',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'burrito wraps',
+        category:'grain',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'chicken',
+        category:'meat',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'salmon',
+        category:'meat',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'ground turkey',
+        category:'meat',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'tilapia',
+        category:'meat',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'sausage',
+        category:'meat',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'burger patties',
+        category:'meat',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'pre cooked lasagna noodles',
+        category:'grain',
+        aisle:"1",
+        listname:"Lasagna"
+      },
+      {
+        name:'can tomatoes',
+        category:'etc',
+        aisle:"1",
+        listname:"Lasagna"
+      },
+      {
+        name:'can tomato paste',
+        category:'etc',
+        aisle:"1",
+        listname:"Lasagna"
+      },
+      {
+        name:'ricotta cheese',
+        category:'dairy',
+        aisle:"1",
+        listname:"Lasagna"
+      },
+      {
+        name:'block motzarella',
+        category:'dairy',
+        aisle:"1",
+        listname:"Lasagna"
+      },
+      {
+        name:'onion',
+        category:'vegetable',
+        aisle:"1",
+        listname:"Lasagna"
+      },
+      {
+        name:'spinach',
+        category:'vegetable',
+        aisle:"1",
+        listname:"Lasagna"
+      },
+      {
+        name:'shredded bag motzarella',
+        category:'dairy',
+        aisle:"1",
+        listname:"Lasagna"
+      },
+      {
+        name:'parma cheese',
+        category:'dairy',
+        aisle:"1",
+        listname:"Lasagna"
+      },
+      {
+        name:'beans',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'hoisin sauce',
+        category:'etc',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'swiss cheese',
+        category:'dairy',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'avocado',
+        category:'vegetable',
+        aisle:"1",
+        listname:"main"
+      },
+      {
+        name:'burger sauce',
+        category:'etc',
+        aisle:"1",
+        listname:"main"
+      }
+    ]
+
 
   let filterResults = ref([])
 
@@ -248,7 +653,12 @@
   }
 
   const quickSeed = () =>{
-    
+    for(let i = 0; i<seedItem.length; i++){
+      axios.post('https://grocerylists-backend.herokuapp.com/api/items', seedItem[i])
+      .then((response)=>{
+      foods.value = [...foods.value, response.data]
+      })
+    }
   }
 
 //pages
@@ -273,7 +683,7 @@
     <div className="main-flex" v-if="page == 'main'">
       <h1 className="page-title">Master List</h1>
       <HIDEMENU :menu="menu" :toggleMenu="toggleMenu"/>
-      <SEEDDATA :quickSeed="quickSeed"/>
+      <SEEDDATA :menu="menu" :quickSeed="quickSeed"/>
       <FILTER :filter="filter" :clearFilter="clearFilter" :search="search" :menu="menu"/>
       <CREATESUB :createSub="createSub" :menu="menu"/>
       <POST :handleCreate = "handleCreate" :postNewItem = "postNewItem" :menu="menu"/>

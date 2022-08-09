@@ -1,6 +1,6 @@
 <script>
 export default{
-  props:['quickSeed'],
+  props:['quickSeed', 'menu'],
   data(){
     return{
 
@@ -10,5 +10,5 @@ export default{
 </script>
 
 <template>
-  <button @click="quickSeed" class="button-design">Quick Seed</button>
+  <button v-if="menu == true" @click="quickSeed" class="button-design">Quick Seed</button>
 </template>
