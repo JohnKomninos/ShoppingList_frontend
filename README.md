@@ -19,3 +19,5 @@ Technology used:
 
     Shopping page
     1. This page displays all items that have been added to the shopping list. As a user shops, they can delete the items off the shopping list once they have the item.
+
+    hi
