@@ -653,11 +653,13 @@
   }
 
   const quickSeed = () =>{
-    for(let i = 0; i<seedItem.length; i++){
-      axios.post('https://grocerylists-backend.herokuapp.com/api/items', seedItem[i])
-      .then((response)=>{
-      foods.value = [...foods.value, response.data]
-      })
+    if(foods.value.length === 0){
+      for(let i = 0; i<seedItem.length; i++){
+        axios.post('https://grocerylists-backend.herokuapp.com/api/items', seedItem[i])
+        .then((response)=>{
+        foods.value = [...foods.value, response.data]
+        })
+      }
     }
   }
 
