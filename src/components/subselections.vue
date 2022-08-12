@@ -37,11 +37,10 @@ export default{
 
 <template>
   <h1 className="selection">#{{index+1}}. {{filterResults[index].name}}</h1>
-  <div v-if="quantity == false">
-    <h3>Do you need {{filterResults[index].name}} ?
-      <button className="button-design" @click="displayQuantity">Yes</button>
-      <button className="button-design" @click="increaseIndex()">No</button><br/>
-    </h3>
+  <div className="selection" v-if="quantity == false">
+    <h3>Do you need {{filterResults[index].name}} ?</h3>
+    <button className="button-design" @click="displayQuantity">Yes</button>
+    <button className="button-design" @click="increaseIndex()">No</button>
   </div>
   <form @submit.prevent="submitAndChangeView(index, itemQuantity)" v-if="quantity">
     <h3>How many?
@@ -61,4 +60,5 @@ export default{
   h3{
     font-size: 30px;
   }
+
 </style>
