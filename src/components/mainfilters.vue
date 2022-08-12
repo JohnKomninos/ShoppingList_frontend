@@ -1,6 +1,12 @@
 <script>
 export default{
   props:["filter", "clearFilter", "search", "menu"],
+  methods:{
+    searchAndClear(searchResults){
+        this.search(searchResults)
+        this.searchResults = ""
+    }
+  },
   data(){
     return{
       searchResults : ""
@@ -22,7 +28,7 @@ export default{
     </div>
     <div>
       <h2 className="search">
-        <form @submit.prevent="search(searchResults)">
+        <form @submit.prevent="searchAndClear(searchResults)">
           Search by List:
           <input type="text" v-model="searchResults">
           <input className="button-design" type="submit">
