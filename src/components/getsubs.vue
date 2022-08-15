@@ -17,7 +17,7 @@ export default{
   data(){
     return{
       edit : false,
-      subQuantity : 1
+      subQuantity : this.subFood.quantity
     }
   }
 }
