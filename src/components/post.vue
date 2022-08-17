@@ -31,5 +31,12 @@ export default{
 
   .post button{
     margin-top: 15px;
+
+
   }
+
+  .post form{
+    text-align: center;
+  }
+
 </style>
