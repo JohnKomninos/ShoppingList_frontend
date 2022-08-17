@@ -21,7 +21,7 @@
 //variables
   let view = ref("get")
   let page = ref("main")
-  let menu = ref(true)
+  let menu = ref(false)
   let edit = ref("")
   let postCategory = ref("")
   let editCategory = ref("")
@@ -758,24 +758,26 @@
   }
 
   table{
-    /* border: 2px solid black; */
     text-align: center;
     border-collapse: collapse;
     margin-bottom: 100px;
+
   }
 
   th{
-    border: 2px solid black;
+    border: 2px solid white;
     width:120px;
     font-size: 20px;
+
   }
 
   td{
-    border: 2px solid black;
+    border: 2px solid white;
     text-align: center;
     padding:0;
     margin:0;
     font-size: 30px;
+
   }
 
   body{

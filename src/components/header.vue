@@ -25,7 +25,7 @@ export default{
     display: flex;
     width:100%;
     justify-content: space-around;
-    border-bottom: solid black;
+    border-bottom: solid white;
     background-color: lightgray;
     margin-bottom: 20px;
     background-color: rgb(189, 232, 239)
