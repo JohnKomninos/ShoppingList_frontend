@@ -45,9 +45,11 @@ export default{
   <form @submit.prevent="submitAndChangeView(index, itemQuantity)" v-if="quantity">
     <h3>How many?
       <input type="number" v-model="itemQuantity"/>
+    </h3>
+    <div className="selection">
       <input className="button-design" type="submit"/>
       <button @click="displayQuantity" className="button-design">Back</button>
-    </h3>
+    </div>
   </form>
 
 </template>
