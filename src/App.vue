@@ -18,6 +18,7 @@
   import HIDEMENU from './components/hidemenu.vue'
   import QUICKADD from './components/quickadd.vue'
   import SEEDDATA from './components/seeddata.vue'
+  import SUBFILTER from './components/subfilter.vue'
 //variables
   let view = ref("get")
   let page = ref("main")
