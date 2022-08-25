@@ -664,7 +664,7 @@
     }
   }
 
-//pagesssss
+//pages
 
   const main = () =>{
     page.value = "main"
