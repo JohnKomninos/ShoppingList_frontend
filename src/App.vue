@@ -504,6 +504,18 @@
       axios.post('https://grocerylists-backend.herokuapp.com/api/sublist', newSubItem.value)
       .then((response)=>{
         subFoods.value = [...subFoods.value, response.data]
+        subFoods.value = subFoods.value.sort((a,b)=>{
+          let fa = a.category
+          let fb = b.category
+
+          if(fa < fb){
+            return -1
+          }
+          if(fa > fb){
+            return 1
+          }
+          return 0
+        })
         newSubItem.value = ref(
           {
             name:"",
