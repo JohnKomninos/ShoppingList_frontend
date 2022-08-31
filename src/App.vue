@@ -805,7 +805,7 @@
     border-radius: 8px;
     border-style: none;
     color: #FFFFFF;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     height: 40px;
     margin: 3px;
